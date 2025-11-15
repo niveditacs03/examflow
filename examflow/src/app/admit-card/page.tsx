@@ -54,7 +54,7 @@ export default function AdmitCardPage() {
       const result = await query.get(candidateId!);
 
       const candidateData: CandidateData = {
-        id: result.id!,
+        id: result.id,
         fullName: result.get('fullName'),
         fatherName: result.get('fatherName'),
         motherName: result.get('motherName'),
@@ -98,6 +98,17 @@ export default function AdmitCardPage() {
       });
 
       setQrCodeUrl(qrUrl);
+      
+      // Save QR data to localStorage for blockchain integration
+      try {
+        localStorage.setItem('examflow_qr_data', qrData);
+        localStorage.setItem('examflow_registration_hash', candidateData.registrationHash);
+        localStorage.setItem('examflow_registration_number', candidateData.registrationNumber);
+        console.log('QR data saved to localStorage for blockchain integration');
+      } catch (storageError) {
+        console.warn('Failed to save to localStorage:', storageError);
+      }
+      
       setLoading(false);
     } catch (error) {
       console.error('Error fetching candidate:', error);
@@ -242,12 +253,12 @@ export default function AdmitCardPage() {
                 </div>
 
                 <div>
-                  <p className="text-gray-500 font-medium">Father&apos;s Name</p>
+                  <p className="text-gray-500 font-medium">Father's Name</p>
                   <p className="font-semibold text-gray-800">{candidate.fatherName}</p>
                 </div>
 
                 <div>
-                  <p className="text-gray-500 font-medium">Mother&apos;s Name</p>
+                  <p className="text-gray-500 font-medium">Mother's Name</p>
                   <p className="font-semibold text-gray-800">{candidate.motherName}</p>
                 </div>
 
