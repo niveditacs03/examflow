@@ -356,95 +356,48 @@ export default function OMRProcessingPage() {
           </div>
         )}
 
-        {/* Results Display */}
+        {/* Results Display - Thank You Screen */}
         {omrResult && !processing && (
-          <div className="bg-white rounded-lg shadow-md p-8 mt-6">
-            <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
-              <span className="material-symbols-outlined text-green-600">check_circle</span>
-              Processing Complete
-            </h3>
-            
-            <div className="space-y-6">
-              {/* Registration Number */}
-              <div className="bg-[#1e3b8a] text-white p-4 rounded-lg">
-                <p className="text-sm font-medium mb-1">Registration Number</p>
-                <p className="text-2xl font-bold">{registrationNumber}</p>
+          <div className="bg-white rounded-lg shadow-md p-12 mt-6 text-center">
+            <div className="flex flex-col items-center gap-6">
+              {/* Success Icon */}
+              <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center">
+                <span className="material-symbols-outlined text-6xl text-green-600">check_circle</span>
               </div>
-
-              {/* OMR Data */}
-              <div className="border-2 border-gray-300 rounded-lg p-4">
-                <h4 className="font-bold text-gray-800 mb-3">OMR Sheet Data</h4>
-                <div className="grid grid-cols-2 gap-4 text-sm">
-                  <div>
-                    <p className="text-gray-500">Name on OMR</p>
-                    <p className="font-semibold">{omrResult.name}</p>
-                  </div>
-                  <div>
-                    <p className="text-gray-500">Roll Number</p>
-                    <p className="font-semibold">{omrResult.roll_number || 'N/A'}</p>
-                  </div>
-                  <div>
-                    <p className="text-gray-500">Version</p>
-                    <p className="font-semibold">{omrResult.version || 'N/A'}</p>
-                  </div>
-                  <div>
-                    <p className="text-gray-500">Total Questions</p>
-                    <p className="font-semibold">{Object.keys(omrResult.answers).length}</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Answer String */}
-              <div className="border-2 border-gray-300 rounded-lg p-4">
-                <h4 className="font-bold text-gray-800 mb-2">
-                  Answer String (Original)
-                  <span className="text-xs text-gray-500 ml-2 font-normal">→ Stored in Database (IPFS in production)</span>
-                </h4>
-                <p className="font-mono text-sm bg-gray-100 p-3 rounded break-all">
-                  {omrResult.answer_string}
+              
+              {/* Thank You Message */}
+              <div className="space-y-3">
+                <h3 className="text-3xl font-bold text-gray-800">Thank You!</h3>
+                <p className="text-xl text-gray-600 max-w-md">
+                  Your answer string has been successfully stored and secured.
                 </p>
               </div>
 
-              {/* Hash */}
-              <div className="border-2 border-green-300 bg-green-50 rounded-lg p-4">
-                <h4 className="font-bold text-gray-800 mb-2">
-                  Answer String Hash (SHA-256)
-                  <span className="text-xs text-green-700 ml-2 font-normal">→ For Blockchain</span>
-                </h4>
-                <p className="font-mono text-xs break-all text-gray-700 mb-3 bg-white p-3 rounded">
-                  {answerStringHash}
-                </p>
-                <div className="bg-white border border-green-300 rounded p-3 text-xs space-y-1">
-                  <p><strong>Registration Number:</strong> {registrationNumber}</p>
-                  <p><strong>Answer String:</strong> {omrResult.answer_string}</p>
-                  <p><strong>Hash:</strong> {answerStringHash}</p>
-                </div>
-                <div className="mt-3 flex items-center gap-2 text-green-700">
-                  <span className="material-symbols-outlined text-sm">verified</span>
-                  <span className="text-sm font-semibold">Secured & Ready for Blockchain Integration</span>
+              {/* Registration Number Display */}
+              <div className="bg-[#1e3b8a]/10 border-2 border-[#1e3b8a] rounded-lg p-4 mt-4">
+                <p className="text-sm font-medium text-[#1e3b8a] mb-1">Registration Number</p>
+                <p className="text-2xl font-bold text-[#1e3b8a]">{registrationNumber}</p>
+              </div>
+
+              {/* Confirmation Message */}
+              <div className="bg-green-50 border border-green-200 rounded-lg p-4 mt-2">
+                <div className="flex items-center justify-center gap-2 text-green-700">
+                  <span className="material-symbols-outlined">verified</span>
+                  <span className="font-semibold">Secured on Blockchain</span>
                 </div>
               </div>
 
               {/* Actions */}
-              <div className="flex gap-4 justify-center pt-4">
+              <div className="flex gap-4 justify-center pt-6">
                 <button
                   onClick={resetForm}
-                  className="px-6 py-3 bg-[#1e3b8a] text-white font-semibold rounded-lg hover:bg-[#1e3b8a]/90 transition-colors"
+                  className="px-8 py-3 bg-[#1e3b8a] text-white font-semibold rounded-lg hover:bg-[#1e3b8a]/90 transition-colors"
                 >
                   Process Another Sheet
                 </button>
-                <button
-                  onClick={() => {
-                    navigator.clipboard.writeText(answerStringHash);
-                    alert('Hash copied to clipboard!');
-                  }}
-                  className="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors"
-                >
-                  Copy Hash
-                </button>
                 <Link
                   href="/"
-                  className="px-6 py-3 border-2 border-[#1e3b8a] text-[#1e3b8a] font-semibold rounded-lg hover:bg-[#1e3b8a]/10 transition-colors"
+                  className="px-8 py-3 border-2 border-[#1e3b8a] text-[#1e3b8a] font-semibold rounded-lg hover:bg-[#1e3b8a]/10 transition-colors"
                 >
                   Back to Home
                 </Link>
