@@ -53,7 +53,7 @@ export default function Home() {
                   <span className="truncate">Register as Candidate</span>
                 </Link>
                 <button className="flex h-12 min-w-[84px] max-w-[480px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg border-2 border-[#1e3b8a] bg-transparent px-5 text-base font-bold leading-normal tracking-[0.015em] text-[#1e3b8a] hover:bg-[#1e3b8a]/10 dark:border-white dark:text-white">
-                  <span className="truncate">Verify Exam Results</span>
+                  <span className="truncate">Securing Results</span>
                 </button>
               </div>
               <p className="text-sm font-normal leading-normal text-[#6B7280] dark:text-gray-400">
