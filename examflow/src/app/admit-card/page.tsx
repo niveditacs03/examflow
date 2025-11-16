@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Parse from '@/lib/parse';
 import QRCode from 'qrcode';
@@ -31,7 +31,7 @@ interface CandidateData {
   photoURL?: string;
 }
 
-export default function AdmitCardPage() {
+function AdmitCardContent() {
   const searchParams = useSearchParams();
   const candidateId = searchParams.get('id');
   const admitCardRef = useRef<HTMLDivElement>(null);
@@ -181,13 +181,6 @@ export default function AdmitCardPage() {
           className="px-6 py-3 bg-[#1e3b8a] text-white font-semibold rounded-lg hover:bg-[#1e3b8a]/90 transition-colors"
         >
           🖨️ Print Admit Card
-        </button>
-        <button
-          onClick={handleDownloadPDF}
-          disabled={downloading}
-          className="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 disabled:bg-gray-400 transition-colors"
-        >
-          {downloading ? '⏳ Generating PDF...' : '📥 Download PDF'}
         </button>
       </div>
 
@@ -388,5 +381,20 @@ export default function AdmitCardPage() {
         }
       `}</style>
     </div>
+  );
+}
+
+export default function AdmitCardPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#1e3b8a] mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading...</p>
+        </div>
+      </div>
+    }>
+      <AdmitCardContent />
+    </Suspense>
   );
 }

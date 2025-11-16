@@ -8,42 +8,96 @@ export default function Home() {
           <div className="layout-content-container flex max-w-[960px] flex-1 flex-col">
 
             {/* Main Content */}
-            <main className="flex flex-grow flex-col items-center justify-center px-4 py-16 text-center">
-              <div className="flex flex-col items-center gap-4 text-center">
-                <h1 className="text-4xl font-black leading-tight tracking-[-0.033em] text-[#1e3b8a] dark:text-white md:text-5xl">
-                  Blockchain-Secured Examination System
+            <main className="flex flex-grow flex-col items-center justify-center px-4 py-20 text-center">
+              {/* Logo and Title */}
+              <div className="flex flex-col items-center gap-6 mb-12">
+                <div className="flex items-center gap-3">
+                  <div className="bg-blue-900 p-4 rounded-2xl shadow-lg">
+                    <span className="material-symbols-outlined text-5xl text-white">
+                      verified
+                    </span>
+                  </div>
+                </div>
+                <h1 className="text-5xl font-black leading-tight tracking-tight text-slate-900 dark:text-white md:text-6xl">
+                  ExamFlow
                 </h1>
-                <h2 className="max-w-2xl text-base font-normal leading-normal text-[#6B7280] dark:text-gray-300 md:text-lg">
+                <div className="h-1 w-24 bg-blue-900 rounded-full"></div>
+              </div>
+
+              {/* Tagline */}
+              <div className="flex flex-col items-center gap-4 text-center mb-16">
+                <h2 className="text-3xl font-bold leading-tight tracking-tight text-slate-800 dark:text-slate-100 md:text-4xl">
+                  Blockchain-Secured Examination System
+                </h2>
+                <p className="max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-300">
                   Ensuring tamper-proof and instantly verifiable academic
                   credentials through blockchain technology.
-                </h2>
+                </p>
               </div>
-              <div className="flex w-full max-w-[480px] flex-1 flex-col items-stretch gap-3 px-4 py-8">
+
+              {/* Action Buttons */}
+              <div className="flex w-full max-w-[520px] flex-col items-stretch gap-4 px-4">
                 <Link
                   href="/registration"
-                  className="flex h-12 min-w-[84px] max-w-[480px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-[#1e3b8a] px-5 text-base font-bold leading-normal tracking-[0.015em] text-white hover:bg-[#1e3b8a]/90"
+                  className="group relative overflow-hidden rounded-xl bg-blue-900 px-8 py-4 text-lg font-bold text-white shadow-lg transition-all hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
                 >
-                  <span className="truncate">Register as Candidate</span>
+                  <div className="absolute inset-0 bg-blue-800 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <span className="relative flex items-center justify-center gap-2">
+                    <span className="material-symbols-outlined">person_add</span>
+                    Register as Candidate
+                  </span>
                 </Link>
+
                 <Link
                   href="/exam-center-verification"
-                  className="flex h-12 min-w-[84px] max-w-[480px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-[#1e3b8a] px-5 text-base font-bold leading-normal tracking-[0.015em] text-white hover:bg-[#1e3b8a]/90"
+                  className="group relative overflow-hidden rounded-xl bg-blue-900 px-8 py-4 text-lg font-bold text-white shadow-lg transition-all hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
                 >
-                  <span className="truncate">Exam Center Verification</span>
+                  <div className="absolute inset-0 bg-blue-800 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <span className="relative flex items-center justify-center gap-2">
+                    <span className="material-symbols-outlined">verified</span>
+                    Verify Admit Card
+                  </span>
                 </Link>
+
                 <Link
                   href="/omr-processing"
-                  className="flex h-12 min-w-[84px] max-w-[480px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg border-2 border-[#1e3b8a] bg-transparent px-5 text-base font-bold leading-normal tracking-[0.015em] text-[#1e3b8a] hover:bg-[#1e3b8a]/10 dark:border-white dark:text-white"
+                  className="group relative overflow-hidden rounded-xl bg-white dark:bg-slate-800 border-2 border-blue-900 dark:border-blue-400 px-8 py-4 text-lg font-bold text-blue-900 dark:text-blue-400 shadow-lg transition-all hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
                 >
-                  <span className="truncate">Secure Exam Results</span>
+                  <div className="absolute inset-0 bg-blue-50 dark:bg-slate-700 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <span className="relative flex items-center justify-center gap-2">
+                    <span className="material-symbols-outlined">lock</span>
+                    Secure Exam Results
+                  </span>
                 </Link>
-                <button className="flex h-12 min-w-[84px] max-w-[480px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-[#1e3b8a] px-5 text-base font-bold leading-normal tracking-[0.015em] text-white hover:bg-[#1e3b8a]/90">
-                  <span className="truncate">Results</span>
-                </button>
+
+                <Link
+                  href="/result-generation"
+                  className="group relative overflow-hidden rounded-xl bg-green-700 px-8 py-4 text-lg font-bold text-white shadow-lg transition-all hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  <div className="absolute inset-0 bg-green-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <span className="relative flex items-center justify-center gap-2">
+                    <span className="material-symbols-outlined">assessment</span>
+                    View Results
+                  </span>
+                </Link>
+
+                <Link
+                  href="/admin/answer-key"
+                  className="group relative overflow-hidden rounded-xl bg-slate-900 px-8 py-4 text-lg font-bold text-white shadow-lg transition-all hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] border-2 border-slate-700"
+                >
+                  <div className="absolute inset-0 bg-slate-800 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <span className="relative flex items-center justify-center gap-2">
+                    <span className="material-symbols-outlined">admin_panel_settings</span>
+                    Admin: Create Answer Key
+                  </span>
+                </Link>
               </div>
-              <p className="text-sm font-normal leading-normal text-[#6B7280] dark:text-gray-400">
-                Powered by blockchain technology
-              </p>
+
+              {/* Badge */}
+              <div className="mt-16 inline-flex items-center gap-2 rounded-full bg-blue-50 dark:bg-blue-900/30 px-6 py-3 text-sm font-semibold text-blue-900 dark:text-blue-300 shadow-sm">
+                <span className="material-symbols-outlined text-lg">shield</span>
+                Powered by Blockchain Technology
+              </div>
             </main>
 
             {/* Footer */}

@@ -74,18 +74,6 @@ export default function ExamCenterVerificationPage() {
     });
   };
 
-  const generateRegistrationHash = (candidateData: CandidateHashData): string => {
-    // Generate hash same way as during registration
-    const dataString = JSON.stringify({
-      name: candidateData.fullName,
-      dob: candidateData.dateOfBirth,
-      email: candidateData.email,
-      regNumber: candidateData.registrationNumber,
-      timestamp: candidateData.timestamp
-    });
-    return crypto.createHash('sha256').update(dataString).digest('hex');
-  };
-
   const handleVerify = async (e: React.FormEvent) => {
     e.preventDefault();
     
